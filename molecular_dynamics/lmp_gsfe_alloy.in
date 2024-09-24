@@ -23,10 +23,12 @@ read_data	./crystal_structures/almg1zr1fe0_super.lmp  #
 #set type 2 type/ratio 4 0.5 4678
 
 # ------------------- FIELD DEFINE -----------------------------
-#pair_style      eam/alloy
-#pair_coeff      * * Al99.eam.alloy.txt Al 
+# For the structure almg1zr1fe0_super.lmp not consisting of Fe atoms
 pair_style      eam/alloy 
-pair_coeff      * * Zhou04.eam.alloy.txt Al Fe Mg Zr
+pair_coeff      * * Zhou04.eam.alloy.txt Al Zr Mg 
+#For the other structures  consisting of Fe atoms, please comment the above lines and uncomment the following lines
+#pair_style      eam/alloy 
+#pair_coeff      * * Zhou04.eam.alloy.txt Al Fe Mg Zr
 
 # ------------------- SETTINGS ---------------------------------
 
