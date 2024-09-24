@@ -1,0 +1,93 @@
+# ------------------- INITIALIZE -------------------------------
+units           metal
+boundary        p p p
+atom_style      atomic
+
+
+# ------------------- ATOM DEFINE ------------------------------
+
+#region mybox block 0 24.77 0 14.30 0 35.03
+#create_box 1 mybox
+
+#read_data	./structure/aluminum_super.lmp add merge
+read_data	./structure/almg1zr1fe4_super.lmp 
+
+#set type 1 type/ratio 2 0.5 1239
+#set type 1 type/ratio 3 0.5 3534
+#set type 2 type/ratio 4 0.5 4678
+
+# ------------------- FIELD DEFINE -----------------------------
+#pair_style      eam/alloy
+#pair_coeff      * * Al99.eam.alloy.txt Al 
+pair_style      eam/alloy 
+pair_coeff      * * Zhou04.eam.alloy.txt Al Fe Mg Zr
+
+# ------------------- SETTINGS ---------------------------------
+
+neighbor        0.3     bin
+neigh_modify    delay   10
+
+thermo          1000
+thermo_style    custom step etotal
+
+
+region		upbound block INF INF INF INF 22. INF units box
+region		lobound block INF INF INF  INF INF 2. units box
+
+group		upbound region upbound
+group		lobound region lobound
+group		boundary union lobound upbound
+group		mobile subtract all boundary
+
+region		upper block INF INF  INF INF 17. INF units box
+region		lower block INF INF INF  INF INF 17. units box
+
+group		top region upper
+group		bot region lower
+
+variable        stepn equal 40
+variable        stepm equal ${stepn}+1
+
+variable        latparam equal 4.046
+
+variable        area equal lx*ly
+
+variable        disp equal (${latparam}*sqrt(3)/2)/${stepn}
+
+displace_atoms  bot move -${disp} 0 0 units box
+
+variable        a loop ${stepm}
+label           loop
+
+variable        rdisp equal ($a-1)/${stepn}
+
+displace_atoms  bot move ${disp} 0. 0. units box
+
+compute         peratom all pe/atom
+compute         eatoms all reduce sum c_peratom
+
+variable        gsfe equal c_eatoms/${area}*1.60218*10000
+
+dump            1 all custom 10000 dump.* id type xs ys zs
+
+thermo          1
+thermo_style    custom step pe c_eatoms
+
+# ------------------- EQUILIBRATE -----------------------
+
+fix		1 boundary setforce 0.0 0. 0.0
+fix		2 mobile setforce 0. NULL 0.
+
+min_style       cg
+minimize        0. 0. 100000 100000
+
+print           "${rdisp} ${gsfe}" append gsfe_ori
+
+undump          1
+unfix           1
+unfix		2
+uncompute       peratom
+uncompute       eatoms
+
+next            a
+jump            lmp_gsfe_alloy.in loop
