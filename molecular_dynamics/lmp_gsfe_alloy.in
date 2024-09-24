@@ -5,12 +5,18 @@ atom_style      atomic
 
 
 # ------------------- ATOM DEFINE ------------------------------
-
-#region mybox block 0 24.77 0 14.30 0 35.03
-#create_box 1 mybox
-
+######################################################
 #read_data	./structure/aluminum_super.lmp add merge
-read_data	./structure/almg1zr1fe4_super.lmp 
+#read_data	./structure/almg1zr1fe4_super.lmp 
+####################################################
+read_data	./crystal_structures/almg1zr1fe0_super.lmp  #
+# For structures with another composition, please comment the above line, and uncomment one of the following lines.
+# read_data	./crystal_structures/almg1zr1fe1_super.lmp
+# read_data	./crystal_structures/almg1zr1fe2_super.lmp
+# read_data	./crystal_structures/almg1zr1fe3_super.lmp
+# read_data	./crystal_structures/almg1zr1fe4_super.lmp
+
+
 
 #set type 1 type/ratio 2 0.5 1239
 #set type 1 type/ratio 3 0.5 3534
