@@ -1,0 +1,46 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = Solid_1si
+End
+
+Body 2
+  Name = Solid_2al
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = Face_1alleft
+End
+
+Boundary Condition 2
+  Name = Face_2sifront
+End
+
+Boundary Condition 3
+  Name = Face_3alfront
+End
+
+Boundary Condition 4
+  Name = Face_4albottom
+End
+
+Boundary Condition 5
+  Name = Face_5sicsa
+End
+
+Boundary Condition 6
+  Name = Face_6altop
+End
+
+Boundary Condition 7
+  Name = Face_7siback
+End
+
+Boundary Condition 8
+  Name = Face_8alback
+End
+
+Boundary Condition 9
+  Name = Face_9alright
+End
+
