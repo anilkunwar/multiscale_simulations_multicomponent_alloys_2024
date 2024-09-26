@@ -1,0 +1,13 @@
+! ----- names for bodies -----
+$ Solid_1si = 1
+$ Solid_2al = 2
+! ----- names for boundaries -----
+$ Face_1alleft = 1
+$ Face_2sifront = 2
+$ Face_3alfront = 3
+$ Face_4albottom = 4
+$ Face_5sicsa = 5
+$ Face_6altop = 6
+$ Face_7siback = 7
+$ Face_8alback = 8
+$ Face_9alright = 9
