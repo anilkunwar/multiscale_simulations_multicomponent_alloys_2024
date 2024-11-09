@@ -28,7 +28,13 @@ The following command at the terminal can be employed to run the MD simulations:
 
 $ mpirun -np 7 lmp_mpi -in  filename.in -log data/lammps_sim.log 
 
-The filename.in is the LAMMPS input file. 
+The filename.in is the LAMMPS input file.
+
+Using the bash file:
+
+This command can be incorporated in a bash file (e.g. job.sh), and the bash file can be run in the terminal as following:
+
+$ bash job.sh
 
 
 
