@@ -9,7 +9,7 @@ $ sudo apt-get install elmerfem-csc
 HOW TO RUN THE SIMULATION:
 Once the installation of the Elmer software is complete, the computer simulation can be performed:
 The FORTRAN 90 files have to be compiled using the following command:
-$elmerf90 -o filename.so filename.F90
+$ elmerf90 -o filename.so filename.F90
 The user developed codes made available at this repository can be assembled in a directory together with an input file (yet to be made available). The input file can be run with the the following command at the terminal:
 $ ElmerSolver inputfilename.sif
 
