@@ -1,5 +1,8 @@
 # Codes and Data 
-# FEM
+
+DESCRIPTION OF THE CODES AND DATA HERE
+
+# How to Perform Numerical Simulations using FEM
 
 The finite element analysis has been performed using Elmer multiphysics software. The source codes of the Elmer software are available at https://github.com/elmercsc/elmerfem.
 
@@ -28,6 +31,21 @@ $ ElmerSolver inputfilename.sif
 The MWE for the input file (sif) file will be made available later.
 
 
-# Molecular Dynamics simulation
+# How to Perform Molecular Dynamics Simulations
 
 The MD simulations have been performed using LAMMPS software. 
+
+There are many ways to install LAMMPS software in Linux computer. 
+It is recommended to install LAMMPS within a given conda environment. 
+
+The following command at the terminal can be employed to run the MD simulations:
+
+$ mpirun -np 7 lmp_mpi -in  filename.in -log data/lammps_sim.log 
+
+The filename.in is the LAMMPS input file. 
+
+
+
+
+
+
