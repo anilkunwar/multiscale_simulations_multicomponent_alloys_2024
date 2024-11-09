@@ -1,5 +1,5 @@
 # Codes and Data 
-#FEM
+# FEM
 
 The finite element analysis has been performed using Elmer multiphysics software. The source codes of the Elmer software are available at https://github.com/elmercsc/elmerfem.
 
@@ -25,6 +25,6 @@ $ ElmerSolver inputfilename.sif
 The MWE for the input file (sif) file will be made available later.
 
 
-#Molecular Dynamics simulation
+# Molecular Dynamics simulation
 
 The MD simulations have been performed using LAMMPS software. 
