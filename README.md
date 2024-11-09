@@ -35,7 +35,7 @@ The MWE for the input file (sif) file will be made available later.
 
 The MD simulations have been performed using LAMMPS software. 
 
-There are many ways to install LAMMPS software in Linux computer. 
+There are many ways to install LAMMPS software in Linux computer (https://docs.lammps.org/Install.html). 
 It is recommended to install LAMMPS within a given conda environment. 
 
 The following command at the terminal can be employed to run the MD simulations:
