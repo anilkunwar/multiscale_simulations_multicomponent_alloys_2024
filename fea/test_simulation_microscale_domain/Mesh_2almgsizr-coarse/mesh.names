@@ -1,0 +1,15 @@
+! ----- names for bodies -----
+$ Solid_1bottom = 1
+$ Solid_2top = 2
+! ----- names for boundaries -----
+$ Face_1bottom_left = 1
+$ Face_2top_left = 2
+$ Face_3bottom_front = 3
+$ Face_4top_front = 4
+$ Face_5bottom_bottom = 5
+$ Face_6interface = 6
+$ Face_7top_top = 7
+$ Face_8bottom_back = 8
+$ Face_9top_back = 9
+$ Face_10bottom_right = 10
+$ Face_11top_right = 11
