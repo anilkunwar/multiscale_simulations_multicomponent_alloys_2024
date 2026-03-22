@@ -1,0 +1,526 @@
+
+    !Phase change solid-liquid
+    !Elmer solver  input file to compute transient solid liquid phase change with enthalpy formulation for bilayer AlMgSiZr
+    !By: Anil Kunwar (2023-08-01), Gliwice
+    !Less time Interval for stability
+
+    Header
+      CHECK KEYWORDS Warn
+      !Mesh DB "." "Mesh_1tiau"
+      !Mesh DB "." "Mesh_2tiau"
+      !Mesh DB "." "Mesh_3tiau"
+      !Mesh DB "." "Mesh_4tiau"
+      !Mesh DB "." "Mesh_2"
+      !Mesh DB "." "slab"
+      !Mesh DB "." "Mesh_2"
+      !Mesh DB "." "Mesh_1autinbzr"
+      !Mesh DB "." "Mesh_2autinbzr"
+      !Mesh DB "." "Mesh_3autinbzr"
+      !Mesh DB "." "Mesh_4autinbzr"
+      !Mesh DB "." "Mesh_5autinbzr"
+      !Mesh DB "." "Mesh_6autinbzr"
+      !Mesh DB "." "Mesh_7autinbzr"
+      !Mesh DB "./../" "Mesh_5agti6al4v-coarse"
+      !Mesh DB "./../" "Mesh_6agti6al4v-fine"
+      !Mesh DB "./../" "Mesh_6agti6al4v-coarse"
+      !Mesh DB "./../" "Mesh_6agti6al4v-narrrow"
+      !Mesh DB "./../" "Mesh_6agti6al4v-coarsenarrow"
+      !Mesh DB "./../" "Mesh_7cuti6al4v-coarsenarrow"
+      !Mesh DB "./../" "Mesh_8cuti6al4v-coarsenarrow"
+      !Mesh DB "./../" "Mesh_9cuti6al4v-coarsewide"
+      !Mesh DB "./../" "Mesh_10cuti6al4v-coarsewide"
+      !Mesh DB "." "Mesh_1almgsizr"
+      Mesh DB "." "Mesh_2almgsizr-coarse"
+      Include Path ""
+      Results Directory "./results350w1p0v/" 
+      !Results Directory "." 
+    End
+
+    Simulation
+      Max Output Level = 5
+      Coordinate System = Cartesian 3D
+      Coordinate Mapping(3) = 1 2 3
+      Coordinate Scaling = 1.0e-6 !  1.0e-5 !converts units to m for the original geometry in micrometers (300 x 300 x 50 Ti, 300 x 300 x 2 Au)
+      Simulation Type = Transient
+      Steady State Max Iterations = 5 !2 !2 !20 !500 !20
+      !Output Intervals = 20
+      !Output Intervals (66) = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+      !Output Intervals (66) = 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3
+      !Timestep intervals(66) =20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20 3 20  3!100
+      !Timestep Sizes(66) = 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5  3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5  3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5  3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5  3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2 1.0e-5 3.65e-2!5
+      !Output Intervals (4) = 1	1  1  1
+      !Timestep intervals (4) = 20000 1000  20000  1000
+      !Timestep Sizes (4) = 1.0e-8 2.0e-7 1.0e-8 2.0e-7
+      !Output Intervals (8) = 1 1  1  1 1 1  1  1 ! This will output the  simulations at each timestep 
+      !Timestep intervals (8) = 10000 10000  10000  10000 10000 10000  10000  10000
+      !Timestep Sizes (8) = 1.0e-7 1.0e-7  1.0e-7  1.0e-7 1.0e-7 1.0e-7  1.0e-7  1.0e-7  ! this size must be equal to or less than the coordinate scaling
+      !Output Intervals (1) = 1 !1
+      !Timestep intervals (1) = 1000
+      !Timestep Sizes (1) =1.0e-5 !1.0e-6 !7
+      !Output Intervals (18) = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 !1
+      !Timestep intervals (18) = 1 1 4 2 1 4 2 1 4 2 1 4 2 1 4 2 1 4
+      !Timestep Sizes (18) =1.0e-5 1.0e-3 1.0e-2 1.0e-5 1.0e-3 1.0e-2 1.0e-5 1.0e-3 1.0e-2 1.0e-5 1.0e-3 1.0e-2 1.0e-5 1.0e-3 1.0e-2 1.0e-5 1.0e-3 1.0e-2 !1.0e-6 !7
+      !Output Intervals (24) = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1!1
+      !Timestep intervals (24) = 10 1 1 1 1 1 10 1 1 1 1 1  10 1 1 1 1 1 10 1 1 1 1 1
+      !Timestep Sizes (24) =1.0e-7 1.0e-5 1.0e-4 1.0e-3 1.0e-2 5.0e-2 1.0e-7 1.0e-5 1.0e-4 1.0e-3 1.0e-2 5.0e-2 1.0e-7 1.0e-5 1.0e-4 1.0e-3 1.0e-2 5.0e-2 1.0e-7 1.0e-5 1.0e-4 1.0e-3 1.0e-2 5.0e-2 !1.0e-6 !7
+      !Output Intervals (14) = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 !1
+      !Timestep intervals (14) = 10 4 10 4 10 4 10 4 10 4 10 4 10 4
+      !Timestep Sizes (14) =1.0e-6 1.0e-3 1.0e-6 1.0e-3 1.0e-6 1.0e-3 1.0e-6 1.0e-3 1.0e-6 1.0e-3 1.0e-6 1.0e-3 1.0e-6 1.0e-3 !1.0e-6 !7
+      !Output Intervals (1) = 100 !1
+      !Timestep intervals (1) = 30000  
+      !Timestep Sizes (1) =1.0e-5 !1.0e-6 !7
+      !Output Intervals (15) = 1 1  1 1 1 1 1 1 1 1 1 1 1 1 1 !1
+      !Timestep intervals (15) = 18 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+      !Timestep Sizes (15) =1.0e-8  1.0e-6 1.0e-8 1.0e-6  1.0e-9 1.0e-5 1.0e-6 1.0e-4 1.0e-5 1.0e-4 1.0e-6 1.0e-4 1.0e-5 1.0e-6 1.0e-4 !7
+      !Output Intervals (12) = 20 1 20  1  20  1 20 1 20  1  20  1!20 
+      !Timestep intervals (12) = 200 1 200 1 200 1 200 1 200 1 200 1! 2000 total time is 2 ms for traveling a distance of 400 um at scan speed of 0.2 m/s
+      !Timestep Sizes (12) = 1.0e-7 1.0e-4 1.0e-7 1.0e-4 1.0E-7 1.0E-4 1.0e-7 1.0e-4 1.0e-7 1.0e-4 1.0E-7 1.0E-4
+      !Output Intervals (60) =  1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2    !1
+      !Timestep intervals (60) = 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20  2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20 2 20  2 20 2 20 2 20 2 20 2 20   
+      !Timestep Sizes (60) = 1.0e-5 5.0e-5  1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5  1.0e-5 5.0e-5  1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5  1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5  1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5  1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5  1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5 1.0e-5 5.0e-5
+      !Timestep Sizes (110) = 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5  1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5 1.0E-5 2.0E-5
+      !Timestep Sizes (60) = 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5 1.0e-5  5.0E-5   !7
+      Output Intervals (2) = 1 1  !10 !1
+      Timestep intervals (2) = 1 60 
+      Timestep Sizes (2) =1.0e-7  1.0e-5 !1.0e-6 !7
+      Timestepping Method = BDF 
+      BDF Order = 2 
+      Solver Input File = mesh1phasechange_lsenthalpy.sif
+      Post File = "a.vtu"
+      !https://github.com/ElmerCSC/elmerfem/tree/devel/fem/tests/ElasticBeamRestart
+      ! For first simulation
+      !Output File = "../Mesh_1almgsizr/old.result"
+      Output File = "old.result" !307 output tsteps for 0-306.vtu
+      Binary Output = Logical True
+      !! Turn off the comments for restart simulation
+      !! Restart from end of previous simulation
+      !Restart File = old3.result
+      !Restart Position = 0
+      Use Mesh Names = True
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      ! Coefficients for input into the user defined subroutine TravellingHeatSource pointed at a boundary condition
+      ! Parameters for the TravellingHeatSource
+      ! Terms related to Eq. 8 of Kunwar et al, Journal of Materials Science & Technology, 2020 (50), pp. 115-127
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Heat Source Width = Real 0.35e-04 !dia 70 um 0.225e-4 ! r_0 m, beam spot diameter = 45 micrometers
+      Heat Source Coefficient = Real 8.68E+9 !4*2.17E+9  ! coeff_ft = 2.5833*0.185*coeff_gaussian = 2.5833*0.185*4.55E+9 ! 2.0833 for beam efficiency
+      !# the amplitude A in Q_laser = A e^(- 2r^2/r_0^2 - omega*z); A = 2*omega*P/pi*r_0^2
+      Heat Source Speed x = Real 1.00 !1.20 ! 1000 mm/s = 0.2 m/s = 0.2 um/us Range: 0.8-1.2 m/s
+      Heat Source Speed y = Real 0.0 ! 1000 mm/s = 0.2 m/s = 0.2 um/us Range: 0.8-1.2 m/s
+      Heat Source Distance = Real 600.0e-6 ! total length for the laser to travel along x-axis
+      Heat source initial position x = Real 0.0 ! the center of beam is 0 micrometer along the x-axis
+      Heat source initial position y = Real 0.0 !the center of beam is 0 micrometer along the y-axis
+      Super gaussian order n = Real 3.0
+      reciproccal of Super gaussian order 1/n = Real 0.3333
+      prefactor within amplitude term = Real 2.0 
+      prefactor within exponential term = Real 2.0
+      ! Since the heat Q_laser is implemented at the boundary, it is not required to mention the initial z-coordinate 
+      !Pulse width = Real 2.0e-2 !20 ms
+      Absorptance of Top Surface Material = Real 8.5E+07 !Boley et al., Applied Optics, 54 (2015) 2477-2482 Real 6.0E+07 ! per unit length
+      Absorptance of Bottom Surface Material = Real 8.5E+07 ! per unit length  Bunazhiv et al , 2021 Metals https://www.mdpi.com/2075-4701/11/8/1150 
+      Mesh Levels = 1 !2 !2  ! Making the mesh more finer
+    End
+
+    Constants
+      Gravity(4) = 0 -1 0 9.82
+      Stefan Boltzmann = 5.67e-08
+      Permittivity of Vacuum = 8.8542e-12
+      Boltzmann Constant = 1.3807e-23
+      Unit Charge = 1.602e-19
+    End
+
+   Body 1
+      Target Bodies(1) = 1
+      Name = "Solid_1bottom" !UpperLiquid
+      Equation = 1
+      Material = 1
+      Body Force = 1
+      Initial condition = 1
+    End
+
+    Body 2
+      Target Bodies(1) = 2
+      Name = " Solid_2top"
+      Equation = 1
+      Material = 2
+      Body Force = 1
+      Initial condition =1
+    End
+    
+    ! Direct solver to be used to prevent the following errors:
+    ! ERROR:: IterSolve: Numerical Error: System diverged over maximum tolerance.
+    ! http://www.elmerfem.org/forum/viewtopic.php?t=3529
+
+
+    Solver 1
+      Equation = Heat Equation
+      Procedure = "HeatSolve" "HeatSolver"
+      Calculate Loads = True
+      Variable = Temperature
+      Exec Solver = Always
+      Stabilize = True
+      Bubbles = True !False
+      Lumped Mass Matrix = False
+      Optimize Bandwidth = True
+      Steady State Convergence Tolerance = 1.0e-6 !1.0e-5
+      Nonlinear System Convergence Tolerance = 1.0e-7 !1.0e-10 !1.0e-7
+      Nonlinear System Max Iterations = 10 !20
+      Nonlinear System Newton After Iterations = 3 !3 !3
+      Nonlinear System Newton After Tolerance = 1.0e-3 !1.0e-5 !1.0e-3
+      Nonlinear System Relaxation Factor = 0.6 !1 !0.6 !1
+      Linear System Solver = Iterative
+      Linear System Iterative Method = BiCGStab !BiCGStabl
+      !!BiCGstabl polynomial degree = 10
+      Linear System Max Iterations = 500
+      Linear System Convergence Tolerance = 1.0e-10 !1.0e-10
+      Linear System Preconditioning = ILU0
+      Linear System ILUT Tolerance = 1.0e-3
+      Linear System Abort Not Converged = False
+      Linear System Residual Output = 1
+      Linear System Precondition Recompute = 1
+      !Linear System Solver = Direct
+      !Linear System Direct Method = UMFPack
+      !Steady State Convergence Tolerance = 1.0e-4
+    End
+
+    Solver 2
+      Equation = Navier-Stokes
+      Variable = Flow Solution[Velocity:3 Pressure:1]
+      Procedure = "FlowSolve" "FlowSolver"
+      Calculate Loads = True
+      Exec Solver = Always
+      Stabilize = True
+      Bubbles = False
+      Lumped Mass Matrix = False
+      Optimize Bandwidth = True
+      Steady State Convergence Tolerance = 1.0e-4 !1.0e-5
+      Nonlinear System Convergence Tolerance = 1.0e-7 !1.0e-7
+      Nonlinear System Max Iterations = 5 !3 !5 !20 !20
+      Nonlinear System Newton After Iterations = 3 !2 !3 !3
+      Nonlinear System Newton After Tolerance = 1.0e-3
+      Nonlinear System Relaxation Factor = 0.6 ! 1 !0.5 !1
+      Linear System Solver = Iterative
+      Linear System Iterative Method = BiCGStab !BiCGStabl
+      !BiCGstabl polynomial degree = 10
+      Linear System Max Iterations = 500
+      Linear System Convergence Tolerance = 1.0e-10 !1.0e-10 1.0e-10
+      Linear System Preconditioning = ILU0
+      Linear System ILUT Tolerance = 1.0e-3
+      Linear System Abort Not Converged = False
+      Linear System Residual Output = 1
+      Linear System Precondition Recompute = 1
+      !Linear System Solver = Direct
+      !Linear System Direct Method = UMFPack
+      !Steady State Convergence Tolerance = 1.0e-4
+    End
+    
+  Solver 3
+  Equation = "LinearDisp"
+  Procedure = "StressSolve" "StressSolver"
+  Variable = "Displacement"
+  Variable DOFs = Integer 3
+  Calculate Stresses = TRUE
+  Calculate Strains = TRUE
+  Calculate Principal = Logical TRUE
+
+  Linear System Solver = Direct
+  Linear System Symmetric = Logical True
+  Linear System Scaling = Logical False
+  Linear System Iterative Method = BiCGStab
+  Linear System Direct Method = UMFPACK
+  Linear System Convergence Tolerance = 1.0e-8
+  Linear System Max Iterations = 200
+  Linear System Preconditioning = ILU2
+
+  Nonlinear System Convergence Tolerance = Real 1.0e-7
+  Nonlinear System Max Iterations = Integer 1
+  Nonlinear System Relaxation Factor = Real 1
+
+  Steady State Convergence Tolerance= 1.0e-6
+  Optimize Bandwidth = True
+  End
+  
+  
+    Solver 4
+    Exec Solver = never
+    Equation = SaveLine
+    Procedure = "SaveData" "SaveLine"
+    Filename = f.dat
+    End
+
+    !Solver 5
+      !Equation = Result Output
+      !Save Geometry Ids = True
+      !Output Format = Vtu
+      !Vtu Format = Logical True
+      !Procedure = "ResultOutputSolve" "ResultOutputSolver"
+      !Output File Name = Melting_front !comp_elmer_comsol
+      !Scalar Field 1 = Temperature loads
+      !Scalar Field 2 = Temperature
+      !Scalar Field 4 = Pressure
+      !Vector Field 1 = Velocity
+      !Single Precision = True
+      !Exec Solver = After saving
+    !End
+
+    Equation 1
+      Name = "Equation 1"
+      Phase Change Model = Spatial 2
+      Check Latent Heat Release = True
+      Convection = Computed
+      Navier-Stokes = True
+      NS Convect = True
+      Active Solvers(3) = 1 2 3 !4
+    End
+
+    Material 1
+      Name = "Solid_1bottom" !AlMgSiZr (always continuum)
+      !!!!!!!!!For elasticity + plasticity computation purpose!!!!!!!!!!!!
+      !Youngs Modulus = 68e9 !70e9 !139.0e9  !http://www.bestech.com.au/wp-content/uploads/Modulus-of-Elasticity.pd
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Youngs Modulus = Variable vonMises
+      Procedure "plasticityMaterialModel" "getPlasticity"
+      Isotropic elastic modulus in elastic regime in Pa = Real 68e9 !Pa
+      Yield strength of the alloy materials in Pa = Real 249.0e6 !Pa
+      Strength coefficient in Ramberg-Osgood equation = Real 381.08e6 !Pa
+      Reciprocal of strain hardening coefficient = Real 9.7087 !Pa
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Poisson Ratio = Real 0.3
+      Reference Temperature = 298.0
+      !Heat Expansion Coefficient = 8.0e-5 !http://www.balseal.com/sites/default/files/tr18_020707131421.pdf
+      Heat Expansion Coefficient = Variable Temperature
+      Procedure "getThermalExpansivity" "getThermalExpansivity"
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Reference Thermal Expansivity Solid AlMgSiZr = Real -8.371435292934836e-05
+      Thermal Expansivity Coeff As Solid AlMgSiZr = Real -3.7262790630140875e-10
+      Thermal Expansivity Coeff Bs Solid AlMgSiZr = Real 4.2255653792479394e-07
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      !!!!!!!!!!!!!!!!!table for the viscosity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Viscosity = Variable Temperature
+    Real
+      include ./viscosity/mu_almgsizr.dat
+    End
+      !!!!!!volume expansion coefficient for Boussinesq Approximation!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      !Heat expansion Coefficient = 6.9e-5!length expansion coefficient (CTE) = 23.24e-6 H.M.Jin & p. Wu 2002
+      !!!!!!!!!!!!!!!!!table for the enthalpy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Specific Enthalpy = Variable Temperature
+    Real
+      include ./specific_enthalpy/specific_enthalpy_almgsizr.dat
+    End
+      !Phase Change Intervals(2,1) = 830.0 850.0  !1335.0 1339.0
+      Phase Change Intervals(2,1) = 820.0 860.0  !1335.0 1339.0
+      Compressibility Model = Incompressible
+      Reference Pressure = 0
+      !Reference Temperature = Real 298
+      Specific Heat Ratio = 1.4
+      !!!!!!!!!!!!!!UDF for Thermal Conductivity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+      !Heat Conductivity = 17.0
+      !!!!!!!!!!!!!!!!!!!!Variable k_th!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Heat Conductivity = Variable Temperature
+      Procedure "getFilmThermalConductivity" "getThermalConductivity"
+       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      ! Thermal conductivity values of Ti13Nb13Zr
+      Reference Thermal Conductivity Solid AlMgSiZr= Real 199.7  !Cs_TiAlV
+      Cond Coeff As Solid AlMgSiZr = Real  -1.17E-04 !As_TiAlV
+      Cond Coeff Bs Solid AlMgSiZr = Real  9.29E-03
+      Reference Thermal Conductivity Liquid AlMgSiZr = Real 64.549 ! Cl_TiAlV
+      Cond Coeff Liquid AlMgSiZr= Real 1.83E-02  !Al_TiAlV 3.69E-02
+      Melting Point Temperature of AlMgSiZr = Real 842.71 ! Works for both density and thermal conductivity
+      !Reference Thermal Conductivity B = Real 60.054 !88.9342 N. Aksoz et al. 2013
+      !Slope A = Real -0.009 !-0.0602857 
+      !Heat Capacity = 295
+      !!!!!!!!!!!!!!!!!!!!!!User defined function for density!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      !Density = 4506 !7093.926
+      !Density as a function of temperature UDF
+      !Density = Variable Temperature
+      !Procedure "getFilmDensity" "getDensity"
+      !Reference Temperature = Real 298
+      !Reference Density A = Real 7276.6
+      !Slope B = Real -0.613
+      Density = Variable Temperature
+      Procedure "getFilmDensity" "getDensity"
+      Reference Density Solid AlMgSiZr = Real 2672.85   !Cs_TiAlV
+      Density Coeff Solid AlMgSiZr = Real -0.1898   !Ds_TiAlV 
+      Reference Density Liquid AlMgSiZr = Real 2409.2    ! Bl
+      Density Coefficient Liquid AlMgSiZr = Real -0.3153    !Al 
+      Tscaler = Real 1.0
+   End
+
+   Material 2
+      Name = "Solid_2top" !AlMgSiZr (can be either powder or continuum)
+      !!!!!!!!!For elasticity computation purpose!!!!!!!!!!!!
+       !Youngs Modulus = 68e9 !70e9 !139.0e9  !http://www.bestech.com.au/wp-content/uploads/Modulus-of-Elasticity.pd
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Youngs Modulus = Variable vonMises
+      Procedure "plasticityMaterialModel" "getPlasticity"
+      Isotropic elastic modulus in elastic regime in Pa = Real 68e9 !Pa
+      Yield strength of the alloy materials in Pa = Real 249.0e6 !Pa
+      Strength coefficient in Ramberg-Osgood equation = Real 381.08e6 !Pa
+      Reciprocal of strain hardening coefficient = Real 9.7087 !Pa
+      Poisson Ratio = Real 0.3
+      Reference Temperature = 298.0
+      !Heat Expansion Coefficient = 8.0e-5 !http://www.balseal.com/sites/default/files/tr18_020707131421.pdf
+      Heat Expansion Coefficient = Variable Temperature
+      Procedure "getThermalExpansivity" "getThermalExpansivity"
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Reference Thermal Expansivity Solid AlMgSiZr = Real -8.371435292934836e-05
+      Thermal Expansivity Coeff As Solid AlMgSiZr = Real -3.7262790630140875e-10
+      Thermal Expansivity Coeff Bs Solid AlMgSiZr = Real 4.2255653792479394e-07
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      !!!!!!!!!!!!!!!!!table for the viscosity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Viscosity = Variable Temperature
+    Real
+      include ./viscosity/mu_almgsizr.dat
+    End
+      !!!!!!volume expansion coefficient for Boussinesq Approximation!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      !Heat expansion Coefficient = 6.9e-5 !length expansion coefficient (CTE) = 23.24e-6 H.M.Jin & p. Wu 2002
+      !!!!!!!!!!!!!!!!!table for the enthalpy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Specific Enthalpy = Variable Temperature
+    Real
+      include ./specific_enthalpy/specific_enthalpy_almgsizr.dat
+    End
+      !Phase Change Intervals(2,1) = 830.0 850.0  !1335.0 1339.0
+      Phase Change Intervals(2,1) = 820.0 860.0  !1335.0 1339.0
+      Compressibility Model = Incompressible
+      Reference Pressure = 0
+      !Reference Temperature = Real 298
+      Specific Heat Ratio = 1.4
+      !!!!!!!!!!!!!!UDF for Thermal Conductivity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+      !Heat Conductivity = 310.0 
+      !!!!!!!!!!!!!!!!!!!!Variable k_th!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Heat Conductivity = Variable Temperature
+      Procedure "getPowderConductivity" "getThermalConductivity"
+      ! Equivalent thermal conductivity of porous Ag computed from (ksolid = A*T^3+B*T^2+D*T, kgas=A*T^2+B*T, kliquid = Al*T^3+Bl*T^2+D*T)
+      Reference Thermal Conductivity Solid AlMgSiZr= Real 199.7  !Cs_TiAlV
+      Cond Coeff As Solid AlMgSiZr = Real  -1.17E-04 !As_TiAlV
+      Cond Coeff Bs Solid AlMgSiZr = Real  9.29E-03
+      Reference Thermal Conductivity Liquid AlMgSiZr = Real 64.549 ! Cl_TiAlV
+      Cond Coeff Liquid AlMgSiZr= Real 1.83E-02  !Al_TiAlV 3.69E-02
+      Conductivity Coeff Agas of Air = Real 0.00012 !-1.197 
+      Conductivity Coeff Bgas of Air = Real -0.001557 !447.6967 
+      Initial porosity of AlMgSiZr powder= Real 0.38 ! Use the same phrase for density UDF (porosity = 1 - packing density = 1-0.71 = 0.29)
+      Sintering Temperature of AlMgSiZr= Real 723.0 !Common  for kth and rho UDFs
+      Melting Point Temperature of AlMgSiZr = Real 842.71 ! Works for both density and thermal conductivity
+      !Reference Thermal Conductivity B = Real 60.054 !88.9342 N. Aksoz et al. 2013
+      !Slope A = Real -0.009 !-0.0602857 
+      !Heat Capacity = 295 ! Is it really necessary?
+      !!!!!!!!!!!!!!!!!!!!!!User defined function for density!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      !Density = 19360 !7093.926
+      !Density as a function of temperature UDF
+      !Density = Variable Temperature
+      !Procedure "getDensity" "getDensity"
+      !Reference Temperature = Real 298
+      !Reference Density A = Real 7276.6
+      !Slope B = Real -0.613
+      Density = Variable Temperature
+      Procedure "getPowderDensity" "getDensity"
+      ! Equivalent density of porous Ag computed from (ksolid = As*(T-293.15)^2+Bs*(T-293.15)+Cs, kgas=Agas*T^2 + Bgas*T  + Dgas*ln(Egas*T) +Cgas, kliquid = Al*T + Cl)
+      Reference Density Solid AlMgSiZr= Real 2672.85
+      Density Coeff Solid AlMgSiZr= Real -0.1898
+      Reference Density Liquid AlMgSiZr= Real  2409.2
+      Density Coeff Liquid AlMgSiZr= Real -0.3153  
+      Reference Density Cgas of Air= Real  1.14e+01
+      Density Coeff Agas of Air = Real -7.65e-07
+      Density Coeff Bgas of Air = Real 3.16e-03
+      Density Coeff Dgas of Air = Real -1.94
+      Tscaler = Real 1.0 !0.1 !2.50E-01 !1000.0
+    End
+    
+    Body Force 1
+      Name = "Natural convection"
+      Boussinesq = True
+    End
+
+    Initial Condition 1
+      Name = "InitialCondition 1"
+      Velocity 2 = 0
+      Pressure = 0
+      Velocity 1 = 0
+      Temperature = 298.0 !298.00
+      Displacement 1 = 0
+      Displacement 2 = 0
+      Displacement 3 = 0
+    End
+
+    !Initial Condition 2
+      !Name = "InitialCondition 2"
+      !Velocity 2 = 0
+      !Pressure = 0
+      !Velocity 1 = 0
+      !Temperature = 298.00
+    !End
+
+    Boundary Condition 1
+     !Name = "Face_1bottom_left Face_2top_left Face_3bottom_front Face_4top_front Face_8bottom_back Face_9top_back Face_10bottom_right Face_11top_right"
+     !Target Boundaries(8) = 1 2 3 4 8 9 10 11
+     ! Only the substrate layer has zero displacements
+      Name = "Face_1bottom_left  Face_3bottom_front  Face_8bottom_back"
+      Target Boundaries(3) = 1 3 8  
+      !External Temperature = 298.0 !298.00
+      !Heat Transfer Coefficient = 15
+      Displacement 1  = 0
+      Displacement 2  = 0
+      Displacement 3  = 0
+      Noslip wall BC = True
+      Save Scalars = Logical True
+    End
+    
+    Boundary Condition 2
+     !Name = "Face_1bottom_left Face_2top_left Face_3bottom_front Face_4top_front Face_8bottom_back Face_9top_back Face_10bottom_right Face_11top_right"
+     !Target Boundaries(8) = 1 2 3 4 8 9 10 11
+     ! Only the substrate layer has zero displacements
+      Name = "Face_10bottom_right"
+      Target Boundaries(1) =  10  
+      External Temperature = 298.0 !298.00
+      Heat Transfer Coefficient = 15
+      Displacement 1  = 0
+      Displacement 2  = 0
+      Displacement 3  = 0
+      Noslip wall BC = True
+      Save Scalars = Logical True
+    End
+    
+     Boundary Condition 3
+     !Name = "Face_1bottom_left Face_2top_left Face_3bottom_front Face_4top_front Face_8bottom_back Face_9top_back Face_10bottom_right Face_11top_right"
+     !Target Boundaries(8) = 1 2 3 4 8 9 10 11
+     ! Only the substrate layer has zero displacements
+      Name = "Face_11top_right"
+      Target Boundaries(1) = 11  
+      External Temperature = 298.0 !298.00
+      Heat Transfer Coefficient = 15
+      !Displacement 1  = 0
+      !Displacement 2  = 0
+      !Displacement 3  = 0
+      Noslip wall BC = True
+      Save Scalars = Logical True
+    End
+
+
+
+    Boundary Condition 4
+     Name = "Face_5bottom_bottom"
+     Target Boundaries(1) = 5
+      External Temperature = 2.98 !298.00
+      !Define interfacial heat transfer coefficient as h=at^m
+      !Heat Transfer Coefficient = Variable time !8000
+      !Real MATC "20000*pow(tx,-0.03)"
+      !Real MATC "11500*pow(tx,-0.03)"
+      Noslip wall BC = True
+      Displacement 1  = 0
+      Displacement 2  = 0
+      Displacement 3  = 0
+      Save Scalars = Logical True
+      Temperature = 298.0 !298.0  !Dirichlet Boundary Condition Imposed
+    End
+
+
+    Boundary Condition 5
+    Name = "Face_7top_top"
+    Target Boundaries(1) = 7
+    Heat Flux = Variable time
+    Real Procedure "DifferentTypeHeatSource" "FlatTopHeatSource"
+    !Real Procedure "DifferentTypeHeatSource" "GaussianHeatSource"
+    !Real Procedure "RectilinearHeatSource" "TravellingHeatSource"
+    Save Line = True
+    End
+
